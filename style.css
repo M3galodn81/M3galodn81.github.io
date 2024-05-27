@@ -1,0 +1,364 @@
+
+body {
+    background-color: #242329;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+
+@keyframes animateBg {
+    100% {
+        background-position: left;
+    }
+}
+
+body.blurred{
+    filter : blur(5px);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 3ms;
+}
+
+.background{
+    /* width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    color:#00000000; */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        105deg,
+        #242329 0%,
+        #242329 5%,
+        #4e4242 5%,
+        #4e4242 10%,
+        #242329 10%,
+        #242329 15%,
+        #4e4242 15%,
+        #4e4242 20%,
+        #242329 20%,
+        #242329 25%,
+        #4e4242 25%,
+        #4e4242 30%,
+        #242329 30%,
+        #242329 35%,
+        #4e4242 35%,
+        #4e4242 40%,
+        #242329 40%,
+        #242329 45%,
+        #4e4242 45%,
+        #4e4242 50%,
+        #242329 50%,
+        #242329 55%,
+        #4e4242 55%,
+        #4e4242 60%,
+        #242329 60%,
+        #242329 65%,
+        #4e4242 65%,
+        #4e4242 70%,
+        #242329 70%,
+        #242329 75%,
+        #4e4242 75%,
+        #4e4242 80%,
+        #242329 80%,
+        #242329 85%,
+        #4e4242 85%,
+        #4e4242 90%,
+        #242329 90%,
+        #242329 95%,
+        #4e4242 95%,
+        #4e4242 100%
+    );
+    background-size: 200%;
+    background-position: right;
+    background-attachment: fixed;
+    transition: filter 0.3s ease;
+    z-index: -1; /* Place it behind other content */
+    animation: animateBg 60s linear infinite alternate; 
+}
+
+.background.blurred{
+    filter : blur(5px);
+    color:#0000000A;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 3ms;
+}
+
+.main{
+    width: 50%;
+    height: 80%;
+
+    border: 2px solid  #FFFFFF;
+    background-color: #242329;
+    position: fixed;
+
+
+    inset: 0px;
+    width: 50vw;
+    height: 75vh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+
+    padding: 15px;
+    z-index: 10;
+}
+
+h1,h2,h3,p{
+    color: white;
+    font-family: "REM", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+}
+
+.basic_info{
+    inset: 0px;
+    margin: auto;
+
+    padding: 15px;
+}
+
+.info{
+    inset: 0px;
+    margin: auto;
+
+    padding: 15px;
+}
+
+.main_alias{
+    text-align: right;
+    font-size: 90px;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff2b39, #c61881);
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    margin-bottom: 10px;
+    padding-right: 2%;
+}
+
+.other_alias{
+    text-align: right;
+    font-size: 36px;
+    font-weight: 300;
+    background: linear-gradient(to right, #ff2b39, #c61881);
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    margin-top: 5px;
+    padding-right: 2%;
+}
+
+.profile_pic{
+    margin: auto;
+
+    float:left;
+    border: 2px solid #FFFFFF;
+
+    border-radius: 50%;
+
+    width: 300px;
+    height: 300px;
+}
+
+
+p{
+    font-size: 20px;
+}
+
+.p_head{
+    font-size: 28px;
+    color: gray;
+    font-weight: 600;
+}
+
+button{
+    color: white;
+    font-family: "REM", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    height: 30%;
+    width: 30%;
+    background-color: #242329;
+    text-decoration: none;
+    box-shadow: none; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+
+    
+    height:40px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 2%; /* Add some spacing between the buttons */
+    margin-top: 10px; /* Add margin to the top for spacing */
+
+}
+
+.detailed_button{
+    color: white;
+    font-family: "REM", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    width: 90%;
+    background-color: #242329;
+    text-decoration: none;
+    box-shadow: none; 
+    display: inline-block; 
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+
+    height:40px;
+    padding: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 5%;
+}
+
+.misc_box{
+    color: white;
+    font-family: "REM", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    width: 90%;
+    background-color: #242329;
+    text-decoration: none;
+    box-shadow: none; 
+    display: inline-block; 
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+
+
+    height:auto;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.info{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 0;
+
+    font-size: 28px;
+}
+
+.description{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top:0;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.rg_container{
+    margin: auto;
+    padding: 0%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* This sets up a 2-column grid */
+    align-content: normal;
+
+}
+
+.music_links{
+    display: none;
+    width: calc(40% - 40px);
+    height: calc(70% - 40px);
+
+    position: fixed;
+    padding: 10px;
+
+    background-color: #642329;
+    border: 2px solid #FFFFFF;
+    inset: 0px;
+    width: 50vw;
+    height: 75vh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+
+    z-index: 100;
+
+    visibility: hidden;
+    
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.music_links.show{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.social_links{
+    display: none;
+    width: calc(40% - 40px);
+    height: calc(70% - 40px);
+
+    position: fixed;
+    padding: 10px;
+
+    background-color: #642329;
+    border: 2px solid #FFFFFF;
+    inset: 0px;
+    width: 50vw;
+    height: 75vh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+
+    z-index: 100;
+
+    visibility: hidden;
+    
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+}
+
+.social_links.show{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.misc_info{
+    display: none;
+    width: calc(40% - 40px);
+    height: calc(70% - 40px);
+
+    position: fixed;
+    padding: 10px;
+
+    background-color: #642329;
+    border: 2px solid #FFFFFF;
+    inset: 0px;
+    width: 50vw;
+    height: 75vh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+
+    z-index: 100;
+
+    visibility: hidden;
+    
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.misc_info.show{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}

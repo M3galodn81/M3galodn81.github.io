@@ -362,3 +362,96 @@ button{
     opacity: 1;
     visibility: visible;
 }
+
+
+
+
+@media (max-width: 1280px) {
+    .main_alias {
+        font-size: 72px;
+    }
+
+    .other_alias {
+        font-size: 24px;
+    }
+
+    .main {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 1280px) {
+    .main_alias {
+        font-size: 64px;
+    }
+
+    .other_alias {
+        font-size: 24px;
+    }
+
+    .profile_pic {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+
+    .main {
+        width: 60%;
+        margin: auto;
+    }
+
+    .basic_info{
+        margin-bottom: 0px;
+    }
+
+    .info{
+        margin-top: 0px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .main {
+        width: 95%;
+        height: auto;
+        margin: auto;
+    }
+
+    .profile_pic {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .main_alias {
+        font-size: 48px;
+    }
+
+    .other_alias {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .main_alias {
+        font-size: 36px;
+    }
+
+    .other_alias {
+        font-size: 14px;
+    }
+
+    .detailed_button, .misc_box {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .rg_container {
+        grid-template-columns: 1fr; 
+    }
+}

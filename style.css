@@ -393,8 +393,8 @@ button{
     .profile_pic {
         width: 100%;
         height: auto;
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 190px;
+        max-height: 190px;
     }
 
 
@@ -410,6 +410,58 @@ button{
     .info{
         margin-top: 0px;
     }
+}
+
+@media (max-width: 990px) {
+    .main_alias {
+        font-size: 56px;
+    }
+
+    .other_alias {
+        font-size: 20px;
+    }
+
+    .profile_pic {
+        width: 100%;
+        height: auto;
+        max-width: 170px;
+        max-height: 170px;
+    }
+
+    .p_head{
+        font-size: 24px;
+    }
+
+    p{
+        font-size: 18px;
+    }
+    .main {
+        width: 60%;
+        margin: auto;
+    }
+
+    .basic_info{
+        margin-bottom: 0px;
+    }
+
+    .info{
+        margin-top: 0px;
+        font-size: 20px;
+    }
+
+    .description{
+        margin-top: 0px;
+        font-size: 16px;
+    }
+
+    .music_links,.social_links,.misc_info{
+        width: 60%;
+    }
+
+
+
+
+
 }
 
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.min.css">
+        <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.red.min.css">
+
+        <title>M3galodon </title>
+
+
+    </head>
+
+    <body>
+        <main class="container">
+            
+            <div class="container">
+                <article>
+                    <div class="container">
+
+                        <select name="chart" aria-label="Enter a chart" id="chart">
+                            <option selected disabled value="">
+                                Select a chart...
+                            </option>
+                            <option value="1">light-rays [Normal]</option>
+                            <option value="2">Packet Transfer Final [Complex]</option>
+                            <option value="3">Raintain[Overdrive]</option>
+                            <option value="4">Routeout [Special]</option>
+                            <!-- <option>light-rays [Normal]</option> -->
+                        </select> 
+
+                        <div class="grid">
+                            Normal          :
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"   id="normal_hit"  step="1">
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"   id="normal_all"  step="1">
+
+                        </div>
+                        <div class="grid">
+                            Hold and Catch  :
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"   id="hold_hit"    step="1">
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"   id="hold_all"    step="1">
+
+                        </div>
+                        <div class="grid">
+                            Flick  :
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"   id="flick_hit"   step="1">
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"   id="flick_all"   step="1">
+                        </div>
+
+                        <div class="grid">
+                            Total  :
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"  readonly  id="all_hit"    step="1">
+                            <input type="number" name="number" placeholder="Number" aria-label="Number"  readonly  id="all_notes"  step="1">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </body>
+
+    <script>
+        const normal_all = document.getElementById('normal_all');
+        const hold_all = document.getElementById('hold_all');
+        const flick_all = document.getElementById('flick_all');
+        const total_notes = document.getElementById('all_notes');
+
+        const chart_preset = document.getElementById('chart');
+
+        function autoAdd(){
+            const num1 = parseInt(normal_all.value) || 0;
+            const num2 = parseInt(hold_all.value) || 0;
+            const num3 = parseInt(flick_all.value) || 0;
+
+            total_notes.value = num1 + num2 + num3;
+        }
+
+        normal_all.addEventListener('input', autoAdd);
+        hold_all.addEventListener('input', autoAdd);
+        flick_all.addEventListener('input', autoAdd);
+
+        function getSelectedValue() {
+            const select = document.getElementById("chart");
+            const value = select.value;
+            switch (value){
+                case "1":
+                    normal_all.value = 23;
+                    break;
+                case "2":
+                    normal_all.value = 34;
+                    break;
+                case "3":
+                    normal_all.value = 234;
+                    break;
+                case "4":
+                    normal_all.value = 23123;
+                    break;
+            }
+            autoAdd();
+        }
+        chart_preset.addEventListener("change", getSelectedValue);
+    
+
+    </script>
+
+
+</html>

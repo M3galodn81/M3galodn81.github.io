@@ -9,102 +9,115 @@
 
         <title>Random Stuff</title>
 
+        <style>
+            @keyframes spin {
+                0%   { transform: rotate(0deg); }
+                100% { transform: rotate(1440deg); } /* 4 full spins */
+            }
 
+            .spinning {
+                animation: spin 2s ease-out;
+            }
+        </style>
     </head>
 
     <body>
         <main class="container">
-            
-            <div class="container">
-                <article>
-                    <div class="container">
+            <article>
+            <h2>Welcome to Typical High or Low</h2>
+            <p>Where you just predict if a number is high or low.</p>
 
-                        <div class="grid">
-                            <div class="article" >
-                                Welcome to Typical High or Low:
-                                Where you just predict if a number is high or low
-                            </div>
-                        </div>
-                        
-                        <div class="grid">
-                            <!-- Left side -->
-                            <div class="container">
+            <div class="grid">
+                <!-- Betting -->
+                <div>
+                <h4>Choose Your Bet</h4>
+                <button onclick="placeBet(10)">10 Coins</button>
+                <button onclick="placeBet(50)">50 Coins</button>
+                <button onclick="placeBet(playerCoins)">All In</button>
+                </div>
 
-                            </div>
-
-
-                            <!-- Right side -->
-                            <div class="container">
-                            
-                                <!-- Betting -->
-                                <div class="grid">
-                                <button onclick="bet_10">10 Coins </button>
-                                <button onclick="bet_50">50 Coins </button>
-                                <button onclick="bet_all">All In </button>
-                                </div>
-                                
-                                <!-- High or Low -->
-                                <div class="grid">
-                                    <button onclick="predict_high"> High (11-20) </button>
-                                    <button onclick="predict_low"> Low (1-10) </button>
-                                </div>
-                                
-                                <!-- Result -->
-                                <div class="grid">
-                                    <p>BET TO KNOWGHISHFGSDIUFHSDIUHFISDUFHiusdhfius</p>
-                                </div>
-                            
-                            </div>
-                        </div>  
-                    </div>
-                </article>
+                <!-- Predict -->
+                <div>
+                <h4>High or Low</h4>
+                <button onclick="makePrediction('high')">High (11-20)</button>
+                <button onclick="makePrediction('low')">Low (1-10)</button>
+                </div>
             </div>
+
+            <!-- Results -->
+            <div class="grid">
+                <div id="spinner" style="font-size: 2rem; text-align: center;">🎯</div>
+                <p id="result">Make a bet and a prediction to play!</p>
+            </div>
+            
+            <div id="result" class="grid">
+                <p>Make a bet and a prediction to play!</p>
+            </div>
+
+            <!-- Player Status -->
+            <div class="grid">
+                <p><strong>Your Coins:</strong> <span id="coins">100</span></p>
+            </div>
+            </article>
         </main>
+
+        <script>
+            let playerCoins = 100;
+            let currentBet = 0;
+
+            function placeBet(amount) {
+                if (amount > playerCoins) {
+                    showResult("You don't have enough coins!");
+                    return;
+                }
+                currentBet = amount;
+                showResult(`You bet ${amount} coins. Now make a prediction!`);
+            }
+
+            function makePrediction(choice) {
+                if (currentBet === 0) {
+                    showResult("Place a bet first!");
+                    return;
+                }
+
+                const spinner = document.getElementById("spinner");
+                const resultText = document.getElementById("result");
+
+                // Reset previous animation
+                spinner.classList.remove("spinning");
+                void spinner.offsetWidth; // Trigger reflow to restart animation
+                spinner.classList.add("spinning");
+
+                resultText.textContent = "Spinning...";
+
+                setTimeout(() => {
+                    const number = Math.floor(Math.random() * 20) + 1;
+                    const isHigh = number >= 11;
+                    spinner.textContent = `🎯 ${number}`;
+
+                    let text = `Number is ${number}. `;
+                    const win = (choice === 'high' && isHigh) || (choice === 'low' && !isHigh);
+
+                    if (win) {
+                    playerCoins += currentBet;
+                    text += "You won!";
+                    } else {
+                    playerCoins -= currentBet;
+                    text += "You lost!";
+                    }
+
+                    currentBet = 0;
+                    document.getElementById("coins").textContent = playerCoins;
+                    resultText.textContent = text;
+                }, 2000); // 2 seconds spin
+            }
+
+
+            function showResult(text) {
+                document.getElementById("result").innerHTML = `<p>${text}</p>`;
+            }
+        </script>
     </body>
-
-    <script>
-        // const normal_all = document.getElementById('normal_all');
-        // const hold_all = document.getElementById('hold_all');
-        // const flick_all = document.getElementById('flick_all');
-        // const total_notes = document.getElementById('all_notes');
-
-        // const chart_preset = document.getElementById('chart');
-
-        // function autoAdd(){
-        //     const num1 = parseInt(normal_all.value) || 0;
-        //     const num2 = parseInt(hold_all.value) || 0;
-        //     const num3 = parseInt(flick_all.value) || 0;
-
-        //     total_notes.value = num1 + num2 + num3;
-        // }
-
-        // normal_all.addEventListener('input', autoAdd);
-        // hold_all.addEventListener('input', autoAdd);
-        // flick_all.addEventListener('input', autoAdd);
-
-        // function getSelectedValue() {
-        //     const select = document.getElementById("chart");
-        //     const value = select.value;
-        //     switch (value){
-        //         case "1":
-        //             normal_all.value = 23;
-        //             break;
-        //         case "2":
-        //             normal_all.value = 34;
-        //             break;
-        //         case "3":
-        //             normal_all.value = 234;
-        //             break;
-        //         case "4":
-        //             normal_all.value = 23123;
-        //             break;
-        //     }
-        //     autoAdd();
-        // }
-        // chart_preset.addEventListener("change", getSelectedValue);
-    
-
-    </script>
 
 
 </html>

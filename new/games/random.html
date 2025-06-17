@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="../node_modules/@picocss/pico/css/pico.min.css">
+        <link rel="stylesheet" href="../node_modules/@picocss/pico/css/pico.red.min.css">
+
+        <title>Random Stuff</title>
+
+        <style>
+            @keyframes spin {
+                0%   { transform: rotate(0deg); }
+                100% { transform: rotate(1440deg); } /* 4 full spins */
+            }
+
+            .spinning {
+                animation: spin 2s ease-out;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="container">
+            <article>
+            <h2>Welcome to Typical High or Low</h2>
+            <p>Where you just predict if a number is high or low.</p>
+
+            <div class="grid">
+                <!-- Betting -->
+                <div>
+                <h4>Choose Your Bet</h4>
+                <button onclick="placeBet(10)">10 Coins</button>
+                <button onclick="placeBet(50)">50 Coins</button>
+                <button onclick="placeBet(playerCoins)">All In</button>
+                </div>
+
+                <!-- Predict -->
+                <div>
+                <h4>High or Low</h4>
+                <button onclick="makePrediction('high')">High (11-20)</button>
+                <button onclick="makePrediction('low')">Low (1-10)</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="grid">
+                <div id="spinner" style="font-size: 2rem; text-align: center;">🎯</div>
+                <p id="result">Make a bet and a prediction to play!</p>
+            </div>
+            
+            <div id="result" class="grid">
+                <p>Make a bet and a prediction to play!</p>
+            </div>
+
+            <!-- Player Status -->
+            <div class="grid">
+                <p><strong>Your Coins:</strong> <span id="coins">100</span></p>
+                <p><strong>High Score:</strong> <span id="highscore">100</span></p>
+
+            </div>
+            </article>
+        </main>
+
+        <script>
+    let playerCoins = 100;
+    let currentBet = 0;
+    let highestCoins = parseInt(localStorage.getItem("highestCoins")) || 100;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("coins").textContent = playerCoins;
+        document.getElementById("highscore").textContent = highestCoins;
+    });
+
+    function placeBet(amount) {
+        if (amount > playerCoins) {
+            showResult("You don't have enough coins!");
+            return;
+        }
+        currentBet = amount;
+        showResult(`You bet ${amount} coins. Now make a prediction!`);
+    }
+
+    function makePrediction(choice) {
+        if (currentBet === 0) {
+            showResult("Place a bet first!");
+            return;
+        }
+
+        const spinner = document.getElementById("spinner");
+        const resultText = document.getElementById("result");
+
+        spinner.classList.remove("spinning");
+        void spinner.offsetWidth;
+        spinner.classList.add("spinning");
+
+        resultText.textContent = "Spinning...";
+
+        setTimeout(() => {
+            const number = Math.floor(Math.random() * 20) + 1;
+            const isHigh = number >= 11;
+            spinner.textContent = `🎯 ${number}`;
+
+            let text = `Number is ${number}. `;
+            const win = (choice === 'high' && isHigh) || (choice === 'low' && !isHigh);
+
+            if (win) {
+                playerCoins += currentBet;
+                text += "You won!";
+            } else {
+                playerCoins -= currentBet;
+                text += "You lost!";
+            }
+
+            // Update highestCoins if new high is reached
+            if (playerCoins > highestCoins) {
+                highestCoins = playerCoins;
+                localStorage.setItem("highestCoins", highestCoins);
+            }
+
+            currentBet = 0;
+            document.getElementById("coins").textContent = playerCoins;
+            document.getElementById("highscore").textContent = highestCoins;
+            resultText.textContent = text;
+
+            if (playerCoins <= 0) {
+                setTimeout(() => {
+                    playerCoins = 100;
+                    currentBet = 0;
+                    showResult("Game restarted! You have 100 coins.");
+                    document.getElementById("coins").textContent = playerCoins;
+                }, 1500);
+            }
+
+        }, 2000);
+    }
+
+    function showResult(text) {
+        document.getElementById("result").innerHTML = `<p>${text}</p>`;
+    }
+</script>
+
+    </body>
+
+
+</html>

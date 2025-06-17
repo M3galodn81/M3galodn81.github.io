@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="../node_modules/@picocss/pico/css/pico.min.css" />
+  <link rel="stylesheet" href="../new/node_modules/@picocss/pico/css/pico.red.min.css" />
+  <title>Lucky Ladder</title>
+</head>
+<body>
+  <main class="container">
+    <article>
+      <h2>Welcome to Lucky Ladder</h2>
+      <p>Predict if the next number will be higher or lower. Get to the 10th step to win. One wrong guess and you're back to the bottom!</p>
+
+      <!-- Controls -->
+      <div class="grid">
+        <div>
+          <h4>Guess the next number</h4>
+          <button onclick="makePrediction('higher')">Higher</button>
+          <button onclick="makePrediction('lower')">Lower</button>
+        </div>
+      </div>
+
+      <!-- Current Info -->
+      <div class="grid">
+        <p><strong>Current Number:</strong> <span id="current-number">-</span></p>
+        <p><strong>Step:</strong> <span id="step">0</span> / 10</p>
+        <p><strong>Highest Step:</strong> <span id="highest-step">0</span></p>
+      </div>
+
+      <!-- Result -->
+      <div class="grid">
+        <p id="result">Click a button to start!</p>
+      </div>
+    </article>
+
+    <!-- Number History -->
+    <div>
+        <h4>Number History</h4>
+        <div id="history-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 8px;"></div>
+    </div>
+
+  </main>
+
+  <script>
+    let currentNumber = Math.floor(Math.random() * 98) + 1; // 1 to 98
+    let step = 0;
+    let highestStep = parseInt(localStorage.getItem("highestStep")) || 0;
+
+    let history = [];
+    const maxHistory = 20; // Number of past numbers to show
+
+
+    function updateUI(message) {
+      document.getElementById("current-number").textContent = currentNumber;
+      document.getElementById("step").textContent = step;
+      document.getElementById("highest-step").textContent = highestStep;
+      document.getElementById("result").textContent = message;
+    }
+
+    function makePrediction(choice) {
+      const nextNumber = Math.floor(Math.random() * 99) + 1;
+      const correct =
+        (choice === "higher" && nextNumber > currentNumber) ||
+        (choice === "lower" && nextNumber < currentNumber);
+
+      let resultMsg = `Next number: ${nextNumber}. `;
+
+      if (nextNumber === currentNumber) {
+        resultMsg += "It's the same! No move.";
+        updateUI(resultMsg);
+        return;
+      }
+
+      if (correct) {
+        step++;
+        resultMsg += "Correct!";
+        if (step > highestStep) {
+          highestStep = step;
+          localStorage.setItem("highestStep", highestStep);
+        }
+      } else {
+        resultMsg += "Wrong guess! Back to step 0.";
+        step = 0;
+      }
+
+      currentNumber = nextNumber;
+      history.push(nextNumber);
+        if (history.length > maxHistory) history.shift(); // Keep only latest 20
+        updateHistoryGrid();
+
+
+      if (step >= 10) {
+        resultMsg += " 🎉 You reached the top!";
+        step = 0;
+        currentNumber = Math.floor(Math.random() * 98) + 1;
+      }
+
+      updateUI(resultMsg);
+    }
+
+    // Init UI on load
+    document.addEventListener("DOMContentLoaded", () => {
+      updateUI("Game started! Make your first prediction.");
+    });
+
+    function updateHistoryGrid() {
+        const grid = document.getElementById("history-grid");
+        grid.innerHTML = "";
+        history.slice().reverse().forEach(num => {
+            const cell = document.createElement("div");
+            cell.textContent = num;
+            cell.style.textAlign = "center";
+            cell.style.padding = "4px";
+            cell.style.background = "var(--pico-muted-color)";
+            cell.style.borderRadius = "6px";
+            grid.appendChild(cell);
+        });
+        }
+
+  </script>
+</body>
+</html>

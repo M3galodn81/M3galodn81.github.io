@@ -35,3 +35,6 @@ export const bentoCard = `
   hover:shadow-[0_16px_40px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(255,255,255,0.2),inset_0_0_10px_5px_rgba(255,255,255,0.2)]
   dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_10px_5px_rgba(255,255,255,0.1)]
 `;
+
+
+export const uiBackground = "bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-slate-950 dark:to-indigo-950 transition-colors duration-300";

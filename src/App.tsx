@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Sun, Moon } from "lucide-react";
 import Home from "./pages/portfolio/home";
 import About from "./pages/portfolio/about";
@@ -52,14 +52,15 @@ function App() {
         )}
       </button>
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/music" element={<Music />} />
-        </Routes>
-      </BrowserRouter>
+      <HashRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/projects" element={<Projects />} />
+    <Route path="/music" element={<Music />} />
+  </Routes>
+</HashRouter>
+
     </div>
   );
 }

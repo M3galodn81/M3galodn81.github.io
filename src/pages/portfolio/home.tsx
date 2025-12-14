@@ -1,76 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import { bentoCard } from "../../lib/helper";
+import { Check, Copy, Globe, Music } from "lucide-react";
 
 export default function Home() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (el) {
-      const onWheel = (e: WheelEvent) => {
-        if (e.deltaY === 0) return;
-        // Prevent vertical page scroll when scrolling this container
-        e.preventDefault();
-        // Translate vertical scroll to horizontal scroll
-        el.scrollLeft += e.deltaY;
-      };
-      
-      // Use non-passive listener to allow preventDefault
-      el.addEventListener("wheel", onWheel, { passive: false });
-      return () => el.removeEventListener("wheel", onWheel);
-    }
-  }, []);
+  const [copied, setCopied] = useState(false);
 
-  const skills = [
-    { name: "React", icon: "https://cdn.simpleicons.org/react" },
-    { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript" },
-    { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss" },
-    { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs" },
-    { name: "Android Studio", icon: "https://cdn.simpleicons.org/androidstudio" },
-    { name: "Arch Linux", icon: "https://cdn.simpleicons.org/archlinux" },
-    { name: "VS Code", icon: "https://cdn.simpleicons.org/visualstudiocode" },
-    { name: "Krita", icon: "https://cdn.simpleicons.org/krita" },
-    { name: "Unity", icon: "https://cdn.simpleicons.org/unity" },
-    { name: "Cisco Packet Tracer", icon: "https://cdn.simpleicons.org/cisco" },
-    { name: "C#", icon: "https://cdn.simpleicons.org/csharp" },
-    { name: "Python", icon: "https://cdn.simpleicons.org/python" },
-    { name: "Shell", icon: "https://cdn.simpleicons.org/gnubash" },
-    { name: "Figma", icon: "https://cdn.simpleicons.org/figma" },
-    { name: "Git", icon: "https://cdn.simpleicons.org/git" },
-    { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs" },
-    { name: "Vite", icon: "https://cdn.simpleicons.org/vite" },
-    { name: "FL Studio", icon: "https://cdn.simpleicons.org/flstudio" },
-    { name: "SoundCloud", icon: "https://cdn.simpleicons.org/soundcloud" },
-    { name: "YouTube", icon: "https://cdn.simpleicons.org/youtube" }
-  ];
+  const copyEmail = () => {
+    navigator.clipboard.writeText('r3alit.music@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  
 
   return (
     <div className="min-h-screen w-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-slate-950 dark:to-indigo-950 p-8 transition-colors duration-300">
-      
-      {/* Injecting styles for the scrolling animation and hiding scrollbars */}
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
-        }
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-        .pause-on-hover:hover {
-          animation-play-state: paused;
-        }
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-        }
-      `}</style>
-
-      
+                  
       {/* The Bento Grid Container */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full animate-in fade-in duration-700">
         
@@ -132,38 +79,57 @@ export default function Home() {
             "Rarely playing because of college hell, but currently trying to figure out how to make better Artcore music."
           </p>
         </div>
-
-        {/* Tech Stack Carousel - Spans 3 Columns (Full Width) */}
-        <div className={`${bentoCard} md:col-span-3 overflow-hidden flex flex-col justify-center py-8`}>
-            <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 text-center">Tech & Tools</h3>
-            
-            {/* Changed overflow-hidden to overflow-x-auto and added no-scrollbar */}
-            <div 
-              ref={scrollRef}
-              className="w-full inline-flex flex-nowrap overflow-x-auto no-scrollbar [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] cursor-grab active:cursor-grabbing"
-            >
-                <ul className="flex items-center justify-center md:justify-start [&_li]:mx-3 animate-scroll pause-on-hover">
-                    {/* Duplicate list for infinite scroll effect */}
-                    {[...skills, ...skills].map((skill, i) => (
-                        // Added flex-shrink-0 to prevent squishing
-                        <li key={i} className="flex-shrink-0">
-                            {/* Increased padding (px-6) and set text-sm to fix overflow look */}
-                            <span className="flex items-center gap-2 px-6 py-2 rounded-full bg-white/50 dark:bg-white/5 border border-indigo-50 dark:border-white/10 text-slate-700 dark:text-slate-300 text-sm font-medium whitespace-nowrap shadow-sm hover:bg-white/80 dark:hover:bg-white/10 transition-colors select-none">
-                                {skill.icon && (
-                                  <img 
-                                    src={skill.icon} 
-                                    alt="" 
-                                    className="w-4 h-4 object-contain" 
-                                    loading="lazy"
-                                  />
-                                )}
-                                {skill.name}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+        
+        {/* Music Links */}
+        <div className={`${bentoCard} flex flex-col`}>
+           <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+             <Music className="w-5 h-5 text-indigo-500" /> Music
+           </h3>
+           <div className="space-y-3 flex-1">
+              <a href="https://soundcloud.com/m3galodn81" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
+                 <div className="font-semibold text-slate-800 dark:text-white">Soundcloud</div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">Releases before Youtube.</div>
+              </a>
+              <a href="https://www.youtube.com/@M3galodon_Music" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
+                 <div className="font-semibold text-slate-800 dark:text-white">Music Channel</div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">Just music videos.</div>
+              </a>
+              <a href="https://docs.google.com/spreadsheets/d/1Rpqv-e82a0Z6oZRdm69rigbyMULOteKr3xZliwpZpbY/edit?usp=sharing" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
+                 <div className="font-semibold text-slate-800 dark:text-white">Track Permissions</div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">Usage rights list.</div>
+              </a>
+              <button onClick={copyEmail} className="w-full text-left p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10 relative group">
+                 <div className="font-semibold text-slate-800 dark:text-white flex justify-between items-center">
+                    Email
+                    {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4 opacity-50 group-hover:opacity-100" />}
+                 </div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">r3alit.music@gmail.com</div>
+              </button>
+           </div>
         </div>
+
+        {/* Social Links */}
+        <div className={`${bentoCard} flex flex-col`}>
+           <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+             <Globe className="w-5 h-5 text-blue-400" /> Socials
+           </h3>
+           <div className="space-y-3 flex-1">
+              <a href="https://www.youtube.com/@M3galodon_Offical" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
+                 <div className="font-semibold text-slate-800 dark:text-white">Main Channel</div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">Tetris & fanmade charts.</div>
+              </a>
+              <a href="https://x.com/M3galodnOffical" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
+                 <div className="font-semibold text-slate-800 dark:text-white">Twitter / X</div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">Rarely active.</div>
+              </a>
+              <div className="p-3 rounded-xl bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 cursor-default">
+                 <div className="font-semibold text-slate-800 dark:text-white">Discord</div>
+                 <div className="text-xs text-slate-500 dark:text-slate-400">surtr_gaming</div>
+              </div>
+           </div>
+        </div>
+
+
 
         
       </div>

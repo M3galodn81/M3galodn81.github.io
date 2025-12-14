@@ -5,9 +5,9 @@ import Home from "./pages/portfolio/home";
 import About from "./pages/portfolio/about";
 import Projects from "./pages/portfolio/projects";
 import Music from "./pages/portfolio/music";
+import { uiBackground } from "./lib/helper"; // Import the background style
 
 function App() {
-  // 1. Initialize state from localStorage or system preference
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
       if (localStorage.getItem("theme") === "dark" || 
@@ -18,28 +18,28 @@ function App() {
     return "light";
   });
 
-  // 2. Apply the 'dark' class to the HTML element whenever theme changes
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
-      // Optional: Add a dark background to body to override page gradients if needed
-      document.body.classList.add("bg-slate-950"); 
+      document.body.classList.add("bg-slate-950");
+      document.body.classList.remove("bg-indigo-50");
     } else {
       root.classList.remove("dark");
       document.body.classList.remove("bg-slate-950");
+      document.body.classList.add("bg-indigo-50");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // 3. Toggle Handler
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
-    <div className="w-full min-h-screen relative">
-      {/* Theme Toggle Button - Fixed to Top Right */}
+    // Use the imported uiBackground here
+    <div className={`w-full min-h-screen relative ${uiBackground}`}>
+      
       <button
         onClick={toggleTheme}
         className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg transition-all hover:scale-110 active:scale-95 group"

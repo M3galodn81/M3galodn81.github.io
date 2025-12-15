@@ -40,7 +40,7 @@ export default function Home() {
 
         {/* Profile / Navigation Card */}
         <div className={`${bentoCard} flex flex-col items-center justify-center text-center group cursor-pointer`}>
-          <a href="/about" className="flex flex-col items-center w-full h-full justify-center">
+          <Link to="/about" className="flex flex-col items-center w-full h-full justify-center">
             {/* Replaced Emoji with Image */}
             <img 
               src="https://github.com/M3galodn81.png" 
@@ -50,7 +50,7 @@ export default function Home() {
             <span className="text-indigo-600 dark:text-indigo-400 font-medium group-hover:underline">
                 View Full Profile →
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Projects Link Card - Col 1 Row 2 */}

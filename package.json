@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint ."
   },
@@ -22,7 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@types/node": "^24.10.3",
+    "@types/node": "^24.10.4",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
@@ -50,5 +51,5 @@
   "bugs": {
     "url": "https://github.com/M3galodn81/M3galodn81.github.io/issues"
   },
-  "homepage": "https://github.com/M3galodn81/M3galodn81.github.io#readme"
+  "homepage": "https://M3galodn81.github.io/M3galodn81.github.io"
 }

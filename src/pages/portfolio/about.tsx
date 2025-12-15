@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { bentoCard } from "../../lib/helper";
 import {  Workflow, ExternalLink, Code2, Palette, Shield } from "lucide-react";
 
@@ -47,9 +48,9 @@ export default function About() {
           <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-2">About Me</h1>
           <p className="text-slate-600 dark:text-slate-300 text-lg">M3galodon</p>
         </div>
-        <a href="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
+        <Link to="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
           &larr; Back Home
-        </a>
+        </Link>
       </div>
 
       {/* Grid */}

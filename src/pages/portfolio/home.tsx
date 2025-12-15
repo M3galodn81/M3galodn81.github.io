@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { bentoCard } from "../../lib/helper";
 import { Check, Copy, Globe, Music } from "lucide-react";
 
@@ -53,24 +54,24 @@ export default function Home() {
         </div>
 
         {/* Projects Link Card - Col 1 Row 2 */}
-        <a href="/projects" className={`${bentoCard} block hover:scale-[1.02] active:scale-[0.98] group`}>
+        <Link to="/projects" className={`${bentoCard} block hover:scale-[1.02] active:scale-[0.98] group`}>
           <div className="flex justify-between items-start">
              <h3 className="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">Repositories</h3>
              <span className="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform">↗</span>
           </div>
           <p className="text-4xl font-bold text-slate-800 dark:text-white mt-2">Code</p>
           <p className="text-slate-400 dark:text-slate-500 text-xs mt-1">Check out my recent GitHub activity</p>
-        </a>
+        </Link>
 
         {/* Music Link Card - Col 2 Row 2 (NEW) */ }
-        <a href="/music" className={`${bentoCard} block hover:scale-[1.02] active:scale-[0.98] group`}>
+        <Link to="/music" className={`${bentoCard} block hover:scale-[1.02] active:scale-[0.98] group`}>
           <div className="flex justify-between items-start">
              <h3 className="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">Tracks</h3>
              <span className="text-orange-400 text-xl group-hover:translate-x-1 transition-transform">↗</span>
           </div>
           <p className="text-4xl font-bold text-slate-800 dark:text-white mt-2">Music</p>
           <p className="text-slate-400 dark:text-slate-500 text-xs mt-1">Listen to my music releases</p>
-        </a>
+        </Link>
 
         {/* Status / Quote Card - Col 3 Row 2 */}
         <div className={`${bentoCard} flex flex-col justify-center`}>

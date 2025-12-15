@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { bentoCard } from "../../lib/helper";
 
@@ -54,9 +55,9 @@ export default function Projects() {
             Recent repositories from <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">@{GITHUB_USERNAME}</a>
           </p>
         </div>
-        <a href="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
+        <Link to="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
           &larr; Back Home
-        </a>
+        </Link>
       </div>
 
       {/* Loading State */}

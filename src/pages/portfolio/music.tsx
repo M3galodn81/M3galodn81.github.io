@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { bentoCard } from "../../lib/helper";
 import { AlertCircle, ExternalLink, Clock, Activity, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
@@ -76,9 +77,9 @@ export default function Music() {
             Latest uploads on <a href={`https://soundcloud.com/${SC_USERNAME}`} target="_blank" rel="noreferrer" className="text-orange-500 hover:underline">SoundCloud</a>
           </p>
         </div>
-        <a href="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
+        <Link to="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
           &larr; Back Home
-        </a>
+        </Link>
       </div>
 
       {/* Licensed Permission */}

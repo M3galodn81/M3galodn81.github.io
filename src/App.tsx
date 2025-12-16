@@ -6,6 +6,7 @@ import About from "./pages/portfolio/about";
 import Projects from "./pages/portfolio/projects";
 import Music from "./pages/portfolio/music";
 import { uiBackground } from "./lib/helper"; // Import the background style
+import DeviceConfiguration from "./pages/netsec/config_gen";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -58,6 +59,8 @@ function App() {
     <Route path="/about" element={<About />} />
     <Route path="/projects" element={<Projects />} />
     <Route path="/music" element={<Music />} />
+
+    <Route path="/config" element={<DeviceConfiguration />} />
   </Routes>
 </HashRouter>
 

@@ -14,8 +14,6 @@ export default function Home() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  
-
   return (
     <div className="min-h-screen w-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-slate-950 dark:to-indigo-950 p-8 transition-colors duration-300">
                   
@@ -31,10 +29,10 @@ export default function Home() {
           <p className="text-slate-600 dark:text-slate-300 text-lg">
             Rhythm game enthusiast, aspiring music composer, and developer.
           </p>
-          <div className="mt-4 flex gap-2">
-             <span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 text-sm font-medium">Artcore</span>
-             <span className="px-3 py-1 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 text-sm font-medium">Rhythm Games</span>
-             <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 text-sm font-medium">Web Dev</span>
+          <div className="mt-4 flex flex-wrap gap-2">
+             <span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 text-sm font-medium whitespace-nowrap">Artcore</span>
+             <span className="px-3 py-1 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 text-sm font-medium whitespace-nowrap">Rhythm Games</span>
+             <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 text-sm font-medium whitespace-nowrap">Web Dev</span>
           </div>
         </div>
 

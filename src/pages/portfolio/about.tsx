@@ -30,13 +30,9 @@ export default function About() {
   ];
 
   const netSecSkills = [
-   //  { name: "Kali Linux", icon: "https://cdn.simpleicons.org/kalilinux" },
     { name: "Wireshark", icon: "https://cdn.simpleicons.org/wireshark" },
     { name: "Nmap",  },
-   //  { name: "Burp Suite", icon: "https://cdn.simpleicons.org/burpsuite" },
-   //  { name: "Metasploit", icon: "https://cdn.simpleicons.org/metasploit" },
     { name: "Cisco Packet Tracer", icon: "https://cdn.simpleicons.org/cisco" },
-   //  { name: "OpenVPN", icon: "https://cdn.simpleicons.org/openvpn" },
   ];
 
   return (

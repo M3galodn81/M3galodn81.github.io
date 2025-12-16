@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { bentoCard } from "../../lib/helper";
 import { AlertCircle, ExternalLink, Clock, Activity, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
-import { sampleTracks, generalPermissions, type Track } from "../../lib/discography";
+import { sampleTracks, generalPermissions, type Track } from "../../lib/portfolio/discography";
 
 export default function Music() {
   const [tracks, setTracks] = useState<Track[]>([]);

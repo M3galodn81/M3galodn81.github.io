@@ -137,8 +137,26 @@ export default function DeviceConfiguration() {
 
   // --- Handlers ---
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(generatedConfig);
-   toast.success("Configuration copied to clipboard");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(generatedConfig)
+        .then(() => toast.success("Configuration copied to clipboard"))
+        .catch(() => toast.error("Failed to copy"));
+    } else {
+      // Fallback
+      try {
+        const textarea = document.createElement("textarea");
+        textarea.value = generatedConfig;
+        textarea.style.position = "fixed"; // Avoid scrolling to bottom
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        toast.success("Configuration copied to clipboard");
+      } catch (err) {
+        toast.error("Failed to copy manually");
+      }
+    }
   };
 
   const addVlan = () => setVlans([...vlans, { id: 10 + vlans.length * 10, name: "New_VLAN" }]);
@@ -180,7 +198,7 @@ export default function DeviceConfiguration() {
                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-6 h-auto gap-2">
                  <TabsTrigger value="general" className="flex items-center gap-2"><Settings className="w-4 h-4" /> General</TabsTrigger>
                  <TabsTrigger value="vlans" className="flex items-center gap-2"><Network className="w-4 h-4" /> VLANs</TabsTrigger>
-                 <TabsTrigger value="interfaces" className="flex items-center gap-2"><Terminal className="w-4 h-4" /> Iface</TabsTrigger>
+                 <TabsTrigger value="interfaces" className="flex items-center gap-2"><Terminal className="w-4 h-4" /> Interface</TabsTrigger>
                  <TabsTrigger value="services" className="flex items-center gap-2"><Shield className="w-4 h-4" /> Services</TabsTrigger>
                </TabsList>
 

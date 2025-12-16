@@ -7,6 +7,7 @@ import Projects from "./pages/portfolio/projects";
 import Music from "./pages/portfolio/music";
 import { uiBackground } from "./lib/helper"; // Import the background style
 import DeviceConfiguration from "./pages/netsec/config_gen";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -38,9 +39,10 @@ function App() {
   };
 
   return (
+    
     // Use the imported uiBackground here
     <div className={`w-full min-h-screen relative ${uiBackground}`}>
-      
+      <Toaster />
       <button
         onClick={toggleTheme}
         className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg transition-all hover:scale-110 active:scale-95 group"

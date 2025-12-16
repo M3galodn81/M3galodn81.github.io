@@ -38,3 +38,13 @@ export const bentoCard = `
 
 
 export const uiBackground = "bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-slate-950 dark:to-indigo-950 transition-colors duration-300";
+
+
+// Container for list items (VLANs, Interfaces)
+export const configRowBase = "flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-end bg-slate-50 dark:bg-white/5 p-4 rounded-xl border border-slate-100 dark:border-white/5 transition-colors";
+
+// Standard input styles for the config forms
+export const configInput = "bg-white/50 dark:bg-black/20 h-9";
+
+// Small input for tables (ID, VLAN numbers)
+export const configInputSmall = "h-8 bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800";

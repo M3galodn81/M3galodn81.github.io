@@ -409,7 +409,9 @@ export default function DeviceConfiguration() {
         <div className="lg:col-span-1">
            <div className={`${bentoCard} sticky top-6 flex flex-col h-[calc(100vh-8rem)]`}>
               <div className="flex justify-between items-center mb-4">
-                 <h2 className="text-xl font-bold text-slate-800 dark:text-white">Output</h2>
+                 <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                    <Terminal className="w-5 h-5 text-emerald-500" /> Output
+                 </h2>
                  <Button size="sm" variant="outline" onClick={copyToClipboard} className="text-xs"><Copy className="w-4 h-4" />Copy</Button>
               </div>
               

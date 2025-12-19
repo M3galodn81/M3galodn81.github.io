@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { bentoCard } from "../../lib/helper";
 import { Check, Copy, Globe, Music } from "lucide-react";
+import { toast } from "sonner";
 
 export default function Home() {
   
@@ -12,6 +13,7 @@ export default function Home() {
     navigator.clipboard.writeText('r3alit.music@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    toast.success('Email copied to clipboard!');
   };
 
   return (
@@ -57,27 +59,38 @@ export default function Home() {
              <h3 className="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">Repositories</h3>
              <span className="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform">↗</span>
           </div>
-          <p className="text-4xl font-bold text-slate-800 dark:text-white mt-2">Code</p>
-          <p className="text-slate-400 dark:text-slate-500 text-xs mt-1">Check out my recent GitHub activity</p>
+          <p className="text-4xl font-bold text-slate-800 dark:text-white mt-2">Projects</p>
+          <p className="text-slate-400 dark:text-slate-500 text-xs mt-1">Check out my projects I've worked on.</p>
         </Link>
 
         {/* Music Link Card - Col 2 Row 2 (NEW) */ }
         <Link to="/music" className={`${bentoCard} block hover:scale-[1.02] active:scale-[0.98] group`}>
           <div className="flex justify-between items-start">
-             <h3 className="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">Tracks</h3>
+             <h3 className="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">Discography</h3>
              <span className="text-orange-400 text-xl group-hover:translate-x-1 transition-transform">↗</span>
           </div>
           <p className="text-4xl font-bold text-slate-800 dark:text-white mt-2">Music</p>
           <p className="text-slate-400 dark:text-slate-500 text-xs mt-1">Listen to my music releases</p>
         </Link>
 
-        {/* Status / Quote Card - Col 3 Row 2 */}
+        {/* Music Link Card - Col 3 Row 2 */ }
+        <Link to="/blog" className={`${bentoCard} block hover:scale-[1.02] active:scale-[0.98] group`}>
+          <div className="flex justify-between items-start">
+             <h3 className="text-slate-500 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">Blog</h3>
+             <span className="text-orange-400 text-xl group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+          <p className="text-4xl font-bold text-slate-800 dark:text-white mt-2">Blog</p>
+          <p className="text-slate-400 dark:text-slate-500 text-xs mt-1">Read my blog posts</p>
+        </Link>
+
+
+        {/* Status / Quote Card - Col 3 Row 2
         <div className={`${bentoCard} flex flex-col justify-center`}>
           <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">Status</h3>
           <p className="text-slate-600 dark:text-slate-300 italic text-sm">
             "Rarely playing because of college hell, but currently trying to figure out how to make better Artcore music."
           </p>
-        </div>
+        </div> */}
         
         {/* Music Links */}
         <div className={`${bentoCard} flex flex-col`}>
@@ -90,7 +103,7 @@ export default function Home() {
                  <div className="text-xs text-slate-500 dark:text-slate-400">Releases before Youtube.</div>
               </a>
               <a href="https://www.youtube.com/@M3galodon_Music" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
-                 <div className="font-semibold text-slate-800 dark:text-white">Music Channel</div>
+                 <div className="font-semibold text-slate-800 dark:text-white">Youtube (Music)</div>
                  <div className="text-xs text-slate-500 dark:text-slate-400">Just music videos.</div>
               </a>
               <a href="https://docs.google.com/spreadsheets/d/1Rpqv-e82a0Z6oZRdm69rigbyMULOteKr3xZliwpZpbY/edit?usp=sharing" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
@@ -114,11 +127,11 @@ export default function Home() {
            </h3>
            <div className="space-y-3 flex-1">
               <a href="https://www.youtube.com/@M3galodon_Offical" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
-                 <div className="font-semibold text-slate-800 dark:text-white">Main Channel</div>
+                 <div className="font-semibold text-slate-800 dark:text-white">Youtube (Main)</div>
                  <div className="text-xs text-slate-500 dark:text-slate-400">Tetris & fanmade charts.</div>
               </a>
               <a href="https://x.com/M3galodnOffical" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
-                 <div className="font-semibold text-slate-800 dark:text-white">Twitter / X</div>
+                 <div className="font-semibold text-slate-800 dark:text-white">Twitter <s>/ X</s></div>
                  <div className="text-xs text-slate-500 dark:text-slate-400">Rarely active.</div>
               </a>
               <div className="p-3 rounded-xl bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 cursor-default">

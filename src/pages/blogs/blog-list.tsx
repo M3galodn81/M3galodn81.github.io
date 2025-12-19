@@ -53,14 +53,13 @@ const BlogList = () => {
   return (
     <div className={`min-h-screen w-screen flex flex-col ${uiBackground} font-sans text-slate-900 dark:text-slate-100 transition-colors duration-300`}>
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 border-b border-indigo-100/50 dark:border-white/10 bg-white/10 backdrop-blur-md">
+      <nav className="sticky top-0 z-20 border-b border-indigo-100/50 dark:border-white/10 bg-white/10 backdrop-blur-md">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <Link to="/" className="text-xl font-bold tracking-tighter text-slate-800 dark:text-white">
-            DevLog_
+            Posts
           </Link>
           <div className="hidden space-x-8 text-sm font-medium text-slate-600 dark:text-slate-300 md:flex">
-            <Link to="/" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Articles</Link>
-            <a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</a>
+            <a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Home</a>
           </div>
         </div>
       </nav>

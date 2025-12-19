@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { bentoCard } from "../../lib/helper";
+import { FEATURED_REPOS } from "../../lib/portfolio/repository";
+import { GitHubCalendar } from 'react-github-calendar';
 
 interface Repo {
   id: number;
@@ -9,7 +11,7 @@ interface Repo {
   html_url: string;
   language: string | null;
   stargazers_count: number;
-  updated_at: string;
+  created_at: string;
 }
 
 export default function Projects() {
@@ -17,24 +19,29 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  // Your GitHub Username
   const GITHUB_USERNAME = "M3galodn81";
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=10`
-        );
-        
-        if (!response.ok) {
-          throw new Error("Failed to fetch repositories");
-        }
+        // Fetch all target repos in parallel
+        const promises = FEATURED_REPOS.map(async (repoStr) => {
+          const res = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${repoStr}`);
+          if (!res.ok) {
+            console.warn(`Failed to fetch ${repoStr}`); // Log warning but don't crash all
+            return null; 
+          }
+          return res.json();
+        });
 
-        const data = await response.json();
-        setRepos(data);
+        const results = await Promise.all(promises);
+        // Filter out any that failed (null)
+        const validRepos = results.filter((r): r is Repo => r !== null);
+        
+        setRepos(validRepos);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        console.error(err);
+        setError("Failed to load some repositories.");
       } finally {
         setLoading(false);
       }
@@ -52,7 +59,8 @@ export default function Projects() {
         <div>
           <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-2">My Work</h1>
           <p className="text-slate-600 dark:text-slate-300 text-lg">
-            Recent repositories from <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">@{GITHUB_USERNAME}</a>
+            {/* Selected repositories from <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">@{GITHUB_USERNAME}</a> */}
+            Projects I've worked on.
           </p>
         </div>
         <Link to="/" className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline mb-2">
@@ -110,13 +118,15 @@ export default function Projects() {
                   )}
                 </div>
                 <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">
-                  {new Date(repo.updated_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                  {new Date(repo.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                 </span>
               </div>
             </a>
           ))}
         </div>
       )}
+     
+     
     </div>
   );
 }

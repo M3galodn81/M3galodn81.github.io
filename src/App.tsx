@@ -8,6 +8,9 @@ import Music from "./pages/portfolio/music";
 import { uiBackground } from "./lib/helper"; // Import the background style
 import DeviceConfiguration from "./pages/netsec/config_gen";
 import { Toaster } from "./components/ui/sonner";
+import BlogPost from "./pages/blogs/blog-post";
+import BlogList from "./pages/blogs/blog-list";
+import NotFound from "./pages/not-found";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -56,15 +59,21 @@ function App() {
       </button>
 
       <HashRouter>
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/projects" element={<Projects />} />
-    <Route path="/music" element={<Music />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/music" element={<Music />} />
+          
 
-    <Route path="/config" element={<DeviceConfiguration />} />
-  </Routes>
-</HashRouter>
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+
+          <Route path="/config" element={<DeviceConfiguration />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </HashRouter>
 
     </div>
   );

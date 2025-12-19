@@ -41,7 +41,7 @@ export default function Home() {
           <Link to="/about" className="flex flex-col items-center w-full h-full justify-center">
             {/* Replaced Emoji with Image */}
             <img 
-              src="https://github.com/M3galodn81.png" 
+              src="../../assets/avatar.png" 
               alt="M3galodon Profile"
               className="h-24 w-24 rounded-full mb-4 object-cover shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-white/50 dark:border-white/10"
             />

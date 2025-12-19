@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { bentoCard } from "../../lib/helper";
-import {  Workflow, ExternalLink, Code2, Palette, Shield } from "lucide-react";
+import {  Workflow, ExternalLink, Code2, Palette, Shield, FileText } from "lucide-react";
 
 export default function About() {
 
@@ -63,7 +63,7 @@ export default function About() {
         {/* Avatar Placeholder */}
         <div className={`${bentoCard} flex items-center justify-center bg-indigo-100/50 dark:bg-indigo-900/30`}>
            <img 
-              src="https://github.com/M3galodn81.png" 
+              src="../../assets/avatar.png" 
               alt="M3galodon Profile"
               className="h-32 w-32 rounded-full object-cover shadow-lg border-4 border-white/50 dark:border-white/10"
             />
@@ -142,27 +142,6 @@ export default function About() {
         </div> */}
               
             
-        {/* Social Links*/}
-        {/* <div className={`${bentoCard} flex flex-col`}>
-           <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
-             <Twitter className="w-5 h-5 text-blue-400" /> Socials
-           </h3>
-           <div className="space-y-3 flex-1">
-              <a href="https://www.youtube.com/@M3galodon_Offical" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
-                 <div className="font-semibold text-slate-800 dark:text-white">Main Channel</div>
-                 <div className="text-xs text-slate-500 dark:text-slate-400">Tetris & fanmade charts.</div>
-              </a>
-              <a href="https://x.com/M3galodnOffical" target="_blank" rel="noreferrer" className="block p-3 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors border border-white/50 dark:border-white/10">
-                 <div className="font-semibold text-slate-800 dark:text-white">Twitter / X</div>
-                 <div className="text-xs text-slate-500 dark:text-slate-400">Rarely active.</div>
-              </a>
-              <div className="p-3 rounded-xl bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 cursor-default">
-                 <div className="font-semibold text-slate-800 dark:text-white">Discord</div>
-                 <div className="text-xs text-slate-500 dark:text-slate-400">surtr_gaming</div>
-              </div>
-           </div>
-        </div> */}
-
         {/* Rhythm Game Stats */}
         {/* <div className={`${bentoCard} flex flex-col`}>
            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
@@ -206,7 +185,7 @@ export default function About() {
         </div>
 
         {/* Other Things */}
-        {/* <div className={`${bentoCard} md:col-span-3`}>
+        <div className={`${bentoCard} md:col-span-3`}>
            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
              <FileText className="w-5 h-5 text-emerald-500" /> Other Stuff
            </h3>
@@ -219,7 +198,7 @@ export default function About() {
                  <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" />
               </a>
            </div>
-        </div> */}
+        </div>
 
       </div>
     </div>

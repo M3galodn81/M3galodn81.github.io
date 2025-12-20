@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { uiBackground, uiGlass, uiBorder, uiShadow } from '../../lib/helper';
 import MarkdownRenderer from '../../components/Markdown/MarkdownRenderer';

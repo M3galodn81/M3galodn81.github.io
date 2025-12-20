@@ -7,7 +7,6 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
 
-import { Card, CardContent } from "../../components/ui/card";
 import { 
   Copy, Settings, Network, Shield, 
   Plus, Trash2, Terminal, ArrowLeft, 

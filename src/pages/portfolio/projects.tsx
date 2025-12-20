@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { bentoCard } from "../../lib/helper";
 import { FEATURED_REPOS } from "../../lib/portfolio/repository";
-import { GitHubCalendar } from 'react-github-calendar';
+
 
 interface Repo {
   id: number;

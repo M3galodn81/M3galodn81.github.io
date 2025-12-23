@@ -63,7 +63,7 @@ export default function About() {
         {/* Avatar Placeholder */}
         <div className={`${bentoCard} flex items-center justify-center bg-indigo-100/50 dark:bg-indigo-900/30`}>
            <img 
-              src="/src/assets/avatar.png" 
+              src="/public/avatar.png" 
               alt="M3galodon Profile"
               className="h-32 w-32 rounded-full object-cover shadow-lg border-4 border-white/50 dark:border-white/10"
             />

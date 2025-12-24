@@ -121,7 +121,7 @@ const BlogList = () => {
                 <div className="mt-auto flex items-center justify-between border-t border-slate-100 dark:border-white/10 pt-4">
                   <div className="flex items-center gap-2">
                     <div>
-                    <img src="/public/avatar.png" className="h-6 w-6 rounded-full bg-slate-200 dark:bg-white/20"/>
+                    <img src="/avatar.png" className="h-6 w-6 rounded-full bg-slate-200 dark:bg-white/20"/>
                     </div>
                     <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{post.author}</span>
                   </div>
